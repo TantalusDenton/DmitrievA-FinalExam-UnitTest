@@ -4,8 +4,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SreingCalculatorTest {
+public class StringCalculatorTest {
 
     private StringCalculator sc;
 
@@ -16,21 +17,20 @@ public class SreingCalculatorTest {
 
     @AfterEach
     public void tearDown() {
-        StringCalculator = null;
+        sc = null;
     }
 
     @Test
-    public void detectCapitalUseTest1() {
-        StringCalculator.add("-1,5")     -> exception
-        assertThrows(StringCalculator.detectCapitalUse());
+    public void detectNegativeNumber() {
+        StringCalculator.add("-1,5");
+        assertThrows(RuntimeException.class, () ->{});
 
     }
 
     @Test
-    public void detectCapitalUseTest1() {
+    public void detectGreaterThan1000() {
         //Numbers bigger than 1000 should be ignored.
-        StringCalculator.add("1,1000")   -> 1
-
+        assertEquals(StringCalculator.add("1,1000"),1);
     }
 
 }
